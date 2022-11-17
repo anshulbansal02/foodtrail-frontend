@@ -1,11 +1,24 @@
 import "./dashboard.css";
 
 import { Outlet, useLocation } from "react-router-dom";
-import { Avatar, Badge, Tooltip, IconButton, Breadcrumbs } from "@mui/material";
-import { NotificationsRounded, NavigateNext } from "@mui/icons-material";
+import {
+    Avatar,
+    Badge,
+    Tooltip,
+    IconButton,
+    Breadcrumbs,
+    Menu,
+    MenuItem,
+} from "@mui/material";
+import {
+    NotificationsRounded,
+    NavigateNext,
+    Logout,
+} from "@mui/icons-material";
 
 import { GuardedView } from "@components";
 import Sidebar from "./Sidebar";
+import { useState } from "react";
 
 function useBreadcrumbs() {
     let { pathname } = useLocation();
@@ -15,6 +28,15 @@ function useBreadcrumbs() {
 
 export default function Dashboard() {
     const breadcrumbs = useBreadcrumbs();
+
+    const [anchorEl, setAnchorEl] = useState(null);
+    const isOpen = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     return (
         <GuardedView>
@@ -44,16 +66,38 @@ export default function Dashboard() {
                                     </Badge>
                                 </IconButton>
                             </Tooltip>
-
-                            <Avatar
-                                alt="Avatar"
-                                src="https://avatars.dicebear.com/api/micah/your-custom-seed.svg"
-                                sx={{
-                                    width: 48,
-                                    height: 48,
-                                    backgroundColor: "#fff",
+                            <IconButton onClick={handleClick}>
+                                <Avatar
+                                    alt="Avatar"
+                                    src="https://avatars.dicebear.com/api/micah/your-custom-seed.svg"
+                                    sx={{
+                                        width: 48,
+                                        height: 48,
+                                        backgroundColor: "#fff",
+                                    }}
+                                />
+                            </IconButton>
+                            <Menu
+                                open={isOpen}
+                                transformOrigin={{
+                                    horizontal: "left",
+                                    vertical: "top",
                                 }}
-                            />
+                                anchorOrigin={{
+                                    horizontal: "left",
+                                    vertical: "bottom",
+                                }}
+                                onClose={handleClose}
+                                onClick={handleClose}
+                                anchorEl={anchorEl}
+                                id="account-menu"
+                            >
+                                <MenuItem>Profile</MenuItem>
+                                <MenuItem>
+                                    <Logout />
+                                    Sign Out
+                                </MenuItem>
+                            </Menu>
                         </div>
                     </div>
                     <Outlet />
