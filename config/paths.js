@@ -54,6 +54,7 @@ const resolveModule = (resolveFn, filePath) => {
 module.exports = {
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
+  routes:resolveApp('src/routes/router.js'),
   appBuild: resolveApp(buildPath),
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
@@ -63,6 +64,7 @@ module.exports = {
   appTsConfig: resolveApp('tsconfig.json'),
   appJsConfig: resolveApp('jsconfig.json'),
   yarnLockFile: resolveApp('yarn.lock'),
+  
   testsSetup: resolveModule(resolveApp, 'src/setupTests'),
   proxySetup: resolveApp('src/setupProxy.js'),
   appNodeModules: resolveApp('node_modules'),
