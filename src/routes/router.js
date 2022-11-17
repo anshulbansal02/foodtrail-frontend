@@ -30,6 +30,14 @@ const rootRouter = createBrowserRouter([
             },
         ],
     },
+    {
+        path: "/signin",
+        element: <h2>Sign In</h2>,
+    },
+    {
+        path: "/register",
+        element: <h2>Register</h2>,
+    },
 ]);
 
 export default rootRouter;
