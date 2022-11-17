@@ -14,6 +14,7 @@ const rootRouter = createBrowserRouter([
     {
         path: "/dashboard",
         element: <Dashboard />,
+
         children: [
             {
                 path: "products",

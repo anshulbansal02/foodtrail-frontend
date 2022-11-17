@@ -1,0 +1,39 @@
+.dashboard {
+    display: grid;
+    grid-template-columns: 2fr 7fr;
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 48px;
+    background-color: rgb(225, 229, 237);
+    margin: 24px;
+    border-radius: 16px;
+}
+
+.header-crumb {
+    font-size: 1.6rem;
+    text-transform: capitalize;
+}
+
+.right-actions {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 36px;
+}
+
+.current-view-title {
+    font-size: 2rem;
+}
+
+.logo {
+    align-self: center;
+    font-family: "Krona One";
+    font-size: 1.8rem;
+    margin: 24px 0;
+}
